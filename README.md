@@ -1,15 +1,15 @@
-# java7
+# java78
 
-[![Build Status](https://travis-ci.org/Spantree/puppet-java7.svg?branch=master)](https://travis-ci.org/Spantree/puppet-java7)
+[![Build Status](https://travis-ci.org/Spantree/puppet-java78.svg?branch=master)](https://travis-ci.org/Spantree/puppet-java78)
 
 #### Table of Contents
 
 1. [Overview](#overview)
 2. [Module Description](#module-description)
-3. [Setup - The basics of getting started with java7](#setup)
-    * [What java7 affects](#what-java7-affects)
+3. [Setup - The basics of getting started with java78](#setup)
+    * [What java78 affects](#what-java78-affects)
     * [Setup requirements](#setup-requirements)
-    * [Beginning with java7](#beginning-with-java7)
+    * [Beginning with java78](#beginning-with-java78)
 4. [Usage - Configuration options and additional functionality](#usage)
 5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
 5. [Limitations - OS compatibility, etc.](#limitations)
@@ -17,17 +17,17 @@
 
 ## Overview
 
-The module java7 installs the oracle java7 jdk on Ubuntu or Debian based system.
+The module java78 installs the oracle java7 and java8 jdk on Ubuntu or Debian based system.
 
 ## Module Description
 
-This module adds a apt repository and then proceeds to install oracle jdk7
+This module adds a apt repository and then proceeds to install oracle jdk7 and jdk8
 
 ##### NOTE: This module may only be used if you agree to the Oracle license: http://www.oracle.com/technetwork/java/javase/terms/license/
 
 ## Setup
 
-### What java7 affects
+### What java78 affects
 
 * Install oracle jdk using the 'https://launchpad.net/~webupd8team/+archive/ubuntu/java' deb package
 * Sets up a system wide `JAVA_HOME`
@@ -36,17 +36,17 @@ This module adds a apt repository and then proceeds to install oracle jdk7
 
 None at the moment.
 
-### Beginning with java7
+### Beginning with java78
 
-`include java7` is enough to get you up and running.
+`include java78` is enough to get you up and running.
 
 ##Usage
 
-All interaction with the java7 module can be done through the main java7 class.
+All interaction with the java78 module can be done through the main java78 class.
 
-###I just want Oracle java 7 jdk, what's the minimum I need?
+###I just want Oracle java 7 & java 8 jdk, what's the minimum I need?
 ```puppet
-include java7
+include java78
 ```
 
 ##Reference
@@ -55,7 +55,7 @@ include java7
 
 ####Public Classes
 
-* java7: Main class
+* java78: Main class
 
 ###Parameters
 

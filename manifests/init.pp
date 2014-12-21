@@ -1,12 +1,12 @@
-# Class: java7
+# Class: java78
 #
-# This module manages Oracle Java7
+# This module manages Oracle Java7 & 8
 # Parameters: none
 # Requires:
 #  apt
 # Sample Usage:
-#  include java7
-class java7 {
+#  include java78
+class java78 {
   case $::operatingsystem {
     debian: {
       include apt
@@ -20,10 +20,17 @@ class java7 {
         include_src => true
       }
       package { 'oracle-java7-installer':
-        responsefile => '/tmp/java.preseed',
+        responsefile => '/tmp/java7.preseed',
         require      => [
                           Apt::Source['webupd8team'],
-                          File['/tmp/java.preseed']
+                          File['/tmp/java7.preseed']
+                        ],
+      }
+      package { 'oracle-java8-installer':
+        responsefile => '/tmp/java8.preseed',
+        require      => [
+                          Apt::Source['webupd8team'],
+                          File['/tmp/java8.preseed']
                         ],
       }
     }
@@ -32,10 +39,17 @@ class java7 {
 
       apt::ppa { 'ppa:webupd8team/java': }
       package { 'oracle-java7-installer':
-        responsefile => '/tmp/java.preseed',
+        responsefile => '/tmp/java7.preseed',
         require      => [
                           Apt::Ppa['ppa:webupd8team/java'],
-                          File['/tmp/java.preseed']
+                          File['/tmp/java7.preseed']
+                        ],
+      }
+      package { 'oracle-java8-installer':
+        responsefile => '/tmp/java8.preseed',
+        require      => [
+                          Apt::Ppa['ppa:webupd8team/java'],
+                          File['/tmp/java8.preseed']
                         ],
       }
     }
@@ -44,8 +58,13 @@ class java7 {
 
   case $::operatingsystem {
     debian, ubuntu: {
-      file { '/tmp/java.preseed':
-        source => 'puppet:///modules/java7/java.preseed',
+      file { '/tmp/java7.preseed':
+        source => 'puppet:///modules/java78/java7.preseed',
+        mode   => '0600',
+        backup => false,
+      }
+      file { '/tmp/java8.preseed':
+        source => 'puppet:///modules/java78/java8.preseed',
         mode   => '0600',
         backup => false,
       }
@@ -58,7 +77,7 @@ class java7 {
     group   => root,
     owner   => root,
     mode    => '0755',
-    source  => 'puppet:///modules/java7/set_java_home.sh',
+    source  => 'puppet:///modules/java78/set_java_home.sh',
     require => Package['oracle-java7-installer']
   }
 }
