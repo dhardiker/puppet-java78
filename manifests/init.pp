@@ -18,6 +18,8 @@ class java78 (
       $default => $default
   }
 
+  notice "Installing Java versions $versions (default: $default_ver)"
+
   case $::operatingsystem {
     debian: {
       include apt
