@@ -33,7 +33,7 @@ class java78 (
         include_src => true
       }
 
-      if '7' in $versions {
+      if '7' in "$versions" {
         package { 'oracle-java7-installer':
           responsefile => '/tmp/java7.preseed',
           require      => [
@@ -43,7 +43,7 @@ class java78 (
         }
       }
 
-      if '8' in $versions {
+      if '8' in "$versions" {
         package { 'oracle-java8-installer':
           responsefile => '/tmp/java8.preseed',
           require      => [
@@ -59,7 +59,7 @@ class java78 (
 
       apt::ppa { 'ppa:webupd8team/java': }
 
-      if '7' in $versions {
+      if '7' in "$versions" {
         package { 'oracle-java7-installer':
           responsefile => '/tmp/java7.preseed',
           require      => [
@@ -69,7 +69,7 @@ class java78 (
         }
       }
 
-      if '8' in $versions {
+      if '8' in "$versions" {
         package { 'oracle-java8-installer':
           responsefile => '/tmp/java8.preseed',
           require      => [
@@ -84,7 +84,7 @@ class java78 (
 
   case $::operatingsystem {
     debian, ubuntu: {
-      if '7' in $versions {
+      if '7' in "$versions" {
         file { '/tmp/java7.preseed':
           source => 'puppet:///modules/java78/java7.preseed',
           mode   => '0600',
@@ -92,7 +92,7 @@ class java78 (
         }
       }
 
-      if '8' in $versions {
+      if '8' in "$versions" {
         file { '/tmp/java8.preseed':
           source => 'puppet:///modules/java78/java8.preseed',
           mode   => '0600',
@@ -103,7 +103,7 @@ class java78 (
     default: { notice "Unsupported operatingsystem ${::operatingsystem}" }
   }
 
-  if $default_ver == '7' {
+  if "$default_ver" == '7' {
     file { '/etc/profile.d/set_java_home.sh':
       ensure  => file,
       group   => root,
@@ -114,7 +114,7 @@ class java78 (
     }
   }
 
-  if $default_ver == '8' {
+  if "$default_ver" == '8' {
     file { '/etc/profile.d/set_java_home.sh':
       ensure  => file,
       group   => root,
